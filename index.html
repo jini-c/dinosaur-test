@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공룡 테스트 - 당신은 어떤 공룡일까?</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 로딩 화면 -->
+    <div id="loading" class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p>로딩 중...</p>
+    </div>
+
+    <!-- 랜딩 페이지 -->
+    <div id="landing-page" class="page">
+        <div class="landing-container">
+            <h1 class="main-title">공룡 테스트</h1>
+            <p class="subtitle">당신은 어떤 공룡일까요?</p>
+            <div class="start-container">
+                <button id="start-btn" class="start-btn">시작하기</button>
+                <p class="start-note">즐거운 테스트를 시작해보세요!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 메인 페이지 -->
+    <div id="main-page" class="page hidden">
+        <header class="header">
+            <h1>테스트 선택</h1>
+            <button id="logout-btn" class="logout-btn">로그아웃</button>
+        </header>
+        
+        <div class="test-grid">
+            <div class="test-card" data-test="dinosaur">
+                <div class="test-thumbnail">
+                    <img src="image/공룡.png" alt="공룡 테스트">
+                </div>
+                <h3>나는 무슨 공룡일까?</h3>
+                <p>당신의 성격을 분석해서 어떤 공룡과 닮았는지 알아보세요!</p>
+            </div>
+            
+            <div class="test-card" data-test="personality">
+                <div class="test-thumbnail">
+                    <img src="image/성격.png" alt="성격 테스트">
+                 
+                </div>
+                <h3>성격 유형 테스트</h3>
+                <p>MBTI 기반 성격 유형을 알아보세요!</p>
+            </div>
+            
+            <div class="test-card" data-test="animal">
+                <div class="test-thumbnail">
+                    <img src="image/동물.png" alt="동물 테스트">
+                 
+                </div>
+                <h3>나는 어떤 동물일까?</h3>
+                <p>당신의 성격을 동물로 표현해보세요!</p>
+            </div>
+            
+            <div class="test-card" data-test="color">
+                <div class="test-thumbnail">
+                    <img src="image/색깔.png" alt="색깔 테스트">
+                 
+                </div>
+                <h3>나의 색깔은?</h3>
+                <p>당신을 대표하는 색깔을 찾아보세요!</p>
+            </div>
+            
+            <div class="test-card" data-test="job">
+                <div class="test-thumbnail">
+                    <img src="image/직업.png" alt="직업 테스트">
+                 
+                </div>
+                <h3>적성 직업 테스트</h3>
+                <p>당신에게 맞는 직업을 찾아보세요!</p>
+            </div>
+            
+            <div class="test-card" data-test="food">
+                <div class="test-thumbnail">
+                    <img src="image/음식.png" alt="음식 테스트">
+                 
+                </div>
+                <h3>나의 음식 유형</h3>
+                <p>당신의 성격을 음식으로 표현해보세요!</p>
+            </div>
+            
+            <div class="test-card" data-test="season">
+                <div class="test-thumbnail">
+                    <img src="image/계절.png" alt="계절 테스트">
+                 
+                </div>
+                <h3>나의 계절은?</h3>
+                <p>당신을 대표하는 계절을 찾아보세요!</p>
+            </div>
+            
+            <div class="test-card" data-test="movie">
+                <div class="test-thumbnail">
+                    <img src="image/영화.png" alt="영화 테스트">
+                 
+                </div>
+                <h3>나의 영화 장르</h3>
+                <p>당신의 성격에 맞는 영화 장르를 찾아보세요!</p>
+            </div>
+            
+            <div class="test-card" data-test="music">
+                <div class="test-thumbnail">
+                    <img src="image/음악.png" alt="음악 테스트">
+                 
+                </div>
+                <h3>나의 음악 취향</h3>
+                <p>당신의 성격에 맞는 음악 장르를 찾아보세요!</p>
+            </div>
+            
+            <div class="test-card" data-test="travel">
+                <div class="test-thumbnail">
+                    <img src="image/여행.png" alt="여행 테스트">
+                 
+                </div>
+                <h3>나의 여행 스타일</h3>
+                <p>당신에게 맞는 여행 방식을 찾아보세요!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 테스트 시작 페이지 -->
+    <div id="test-start-page" class="page hidden">
+        <header class="header">
+            <button id="back-to-main" class="back-btn">← 돌아가기</button>
+            <h1 id="test-title">나는 무슨 공룡일까?</h1>
+        </header>
+        
+        <div class="test-start-container">
+            <button id="start-test-btn" class="start-test-btn">테스트 시작!</button>
+            <p id="test-description-text" class="test-description"></p>
+        </div>
+    </div>
+
+    <!-- 테스트 진행 페이지 -->
+    <div id="test-page" class="page hidden">
+        <header class="header">
+            <button id="back-to-main-from-test" class="back-btn">← 테스트 목록</button>
+            <div class="test-progress-container">
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+                <span id="question-counter">1 / 10</span>
+            </div>
+        </header>
+        
+        <div class="question-container">
+            <h2 id="question-text">질문이 여기에 표시됩니다</h2>
+            <div class="answer-buttons">
+                <button class="answer-btn" data-answer="A">답변 A</button>
+                <button class="answer-btn" data-answer="B">답변 B</button>
+            </div>
+        </div>
+        
+        <div class="test-navigation">
+            <button id="prev-question" class="nav-btn" disabled>이전</button>
+            <button id="show-result" class="result-btn hidden">결과보기</button>
+        </div>
+    </div>
+
+    <!-- 결과 페이지 -->
+    <div id="result-page" class="page hidden">
+        <header class="header">
+            <button id="back-to-tests" class="back-btn">← 테스트 목록으로</button>
+            <h1>테스트 결과</h1>
+        </header>
+        
+        <div class="result-container">
+            <h2 id="result-title">당신은 [공룡명]가 되었습니다!</h2>
+            <div class="result-image">
+                <img id="result-dinosaur-img" src="" alt="결과 공룡">
+            </div>
+            <div class="result-description">
+                <h3>성격 특징</h3>
+                <p id="result-description-text">공룡의 성격 설명이 여기에 표시됩니다.</p>
+            </div>
+            <div class="result-actions">
+                <button id="retake-test" class="action-btn">다시 테스트하기</button>
+                <button id="share-result" class="action-btn">결과 공유하기</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html> 

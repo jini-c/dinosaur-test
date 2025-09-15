@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쥬라기 월드 공룡 성격 테스트 웹사이트 발표</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            width: 95%;
+            max-width: 1100px;
+            height: 85vh;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            display: none;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        .slide h1 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .slide h2 {
+            font-size: 1.8rem;
+            color: #34495e;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 8px;
+        }
+
+        .slide h3 {
+            font-size: 1.3rem;
+            color: #2980b9;
+            margin: 15px 0 10px 0;
+            font-weight: 600;
+        }
+
+        .slide p, .slide li {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .slide ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .slide li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .slide li:before {
+            content: "▶";
+            color: #3498db;
+            font-size: 0.9rem;
+            position: absolute;
+            left: 0;
+            top: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            text-align: center;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .nav-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        .nav-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .slide-counter {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #495057;
+            overflow-x: auto;
+            line-height: 1.4;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        .demo-box {
+            background: #e8f5e8;
+            border: 2px solid #27ae60;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.3rem;
+            color: #27ae60;
+            font-weight: 600;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 15px;
+            flex: 1;
+        }
+
+        .card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #3498db;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .emoji {
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+
+        .content-center {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            max-width: 500px;
+            height: 250px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: #666;
+            margin: 20px 0;
+            border: 2px dashed #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- 슬라이드 1: 제목 -->
+        <div class="slide active">
+            <div class="slide-counter">1 / 7</div>
+            
+            <!-- 제목 (적당히 위에) -->
+            <h1 style="text-align: center; margin: 20px 0 40px 0;">🦕 쥬라기 월드 공룡 성격 테스트 웹사이트 제작</h1>
+            
+            <!-- 부제목 + 이미지 (붙여서) -->
+            <div style="flex: 3; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 30px 0;">
+                <p class="subtitle" style="margin-bottom: 30px;">바이럴 마케팅 모델의 웹 기술 구현</p>
+                
+                <img src="image/dino-card-main.png" 
+                     alt="공룡 성격 테스트 카드 예시"
+                     style="max-width: 95%; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+            </div>
+            
+            <!-- 하단 설명 -->
+            <div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
+                <p style="font-size: 1.3rem; color: #34495e; margin-bottom: 8px; line-height: 1.4;">
+                    <span class="highlight">HTML5 + CSS3 + JavaScript</span>로 구현한<br>
+                    인터랙티브 성격 테스트 웹 애플리케이션
+                </p>
+                <p style="font-size: 1.1rem; color: #7f8c8d;">
+                    웹프로그래밍 기초 기술 활용 프로젝트
+                </p>
+            </div>
+        </div>
+
+        <!-- 슬라이드 2: 프로젝트 소개 -->
+        <div class="slide">
+            <div class="slide-counter">2 / 7</div>
+            <h2>🎯 프로젝트 소개</h2>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h3>📋 프로젝트 개요</h3>
+                    <ul style="flex: 1;">
+                        <li>10개 질문을 통해 나와 닮은 공룡 유형을 매칭하는 성격 테스트</li>
+                        <li>HTML, CSS, JavaScript를 활용한 인터랙티브 웹사이트 구현</li>
+                        <li>쥬라기 월드 콘셉트를 활용한 흥미 유도형 실습 프로젝트</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div style="text-align: center;">
+                        <img src="image/slide-preview.png" 
+                             alt="사이트 미리보기"
+                             style="max-width: 100%; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); margin: 10px 0;">
+                        <p style="text-align: center; color: #7f8c8d; font-size: 0.95rem; margin-top: 8px;">
+                            🖼 실제 결과 페이지 화면
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-box">
+                <a href="index.html" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                    ✅ 완성된 사이트 데모 보러가기!
+                </a>
+            </div>
+        </div>
+
+        <!-- 슬라이드 3: 기술 스택 및 개발 환경 -->
+        <div class="slide">
+            <div class="slide-counter">3 / 7</div>
+            <h2>🛠️ 기술 스택 및 개발 환경</h2>
+
+            <div class="grid-2">
+                <div class="card">
+                    <h3>💻 선택한 기술 스택</h3>
+                    <ul style="flex: 1;">
+                        <li>
+                            <strong>Frontend</strong><br>
+                            HTML5 (구조), CSS3 (스타일), Vanilla JavaScript (상호작용)
+                        </li>
+                        <li>
+                            <strong>개발 도구</strong><br>
+                            VS Code (코드 에디터)
+                        </li>
+                        <li>
+                            <strong>Live Server (로컬 서버)</strong><br>
+                            실시간 미리보기
+                        </li>
+                        <li>
+                            <strong>Chrome DevTools (디버깅)</strong><br>
+                            개발자 도구
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>📂 프로젝트 구조 및 환경 설정</h3>
+                    <div style="flex: 1;">
+                        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 0.9rem; margin: 10px 0;">
+                            📁 jurassic-personality-test/<br>
+                            ├── 📄 index.html (메인 페이지)<br>
+                            ├── 🎨 styles.css (스타일 시트)<br>
+                            ├── ⚙️ script.js (자바스크립트)<br>
+                            └── 📁 image/ (이미지 폴더)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;├── dino1.png<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;├── dino2.png<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;└── ...
+                        </div>
+                        <ul style="margin-top: 10px; font-size: 1rem;">
+                            <li>
+                                <strong>개발 환경 과정:</strong><br>
+                                VS Code → Live Server → 실시간 미리보기
+                            </li>
+                            <li>
+                                <strong>디버깅:</strong><br>
+                                F12 개발자 도구 활용
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 슬라이드 4: HTML & CSS -->
+        <div class="slide">
+            <div class="slide-counter">4 / 7</div>
+            <h2>🏗️ 핵심 기술 구현 - HTML & CSS</h2>
+            
+            <h3>📄 HTML: 구조 설계</h3>
+            <div class="code-block">
+&lt;!-- 모든 페이지를 한 파일에 구성 --&gt;<br>
+&lt;div id="landing-page" class="page"&gt;...&lt;/div&gt;<br>
+&lt;div id="test-page" class="page hidden"&gt;...&lt;/div&gt;<br>
+&lt;div id="result-page" class="page hidden"&gt;...&lt;/div&gt;
+            </div>
+
+            <h3>🎨 CSS: 사용자 경험 설계</h3>
+            <ul>
+                <li><strong>페이지 전환:</strong> <span class="highlight">.hidden</span> 클래스로 show/hide 구현</li>
+                <li><strong>반응형 디자인:</strong> 모바일부터 데스크톱까지 대응</li>
+                <li><strong>인터랙션 피드백:</strong> 호버 효과로 클릭 유도</li>
+            </ul>
+
+            <div class="code-block">
+.hidden { display: none !important; }<br>
+.answer-btn:hover { transform: translateY(-1px); }
+            </div>
+        </div>
+
+        <!-- 슬라이드 5: JavaScript -->
+        <div class="slide">
+            <div class="slide-counter">5 / 7</div>
+            <h2>⚙️ 핵심 기술 구현 - JavaScript</h2>
+            
+            <h3>🔄 1. 페이지 전환 시스템</h3>
+            <div class="code-block">
+function showPage(pageId) {<br>
+&nbsp;&nbsp;// 모든 페이지 숨기기<br>
+&nbsp;&nbsp;document.querySelectorAll('.page')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.forEach(page => page.classList.add('hidden'));<br>
+&nbsp;&nbsp;// 선택된 페이지만 보이기<br>
+&nbsp;&nbsp;document.getElementById(pageId + '-page')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.classList.remove('hidden');<br>
+}
+            </div>
+
+            <h3>🧮 2. 주요 기능들</h3>
+            <ul>
+                <li><strong>테스트 로직:</strong> 질문 데이터 순차 표시, 답변 수집</li>
+                <li><strong>결과 계산:</strong> 공룡 유형별 점수 계산 알고리즘</li>
+                <li><strong>동적 콘텐츠:</strong> DOM 조작으로 실시간 내용 변경</li>
+                <li><strong>이벤트 처리:</strong> 사용자 상호작용 감지 및 반응</li>
+            </ul>
+        </div>
+
+        <!-- 슬라이드 6: 문제 해결 -->
+        <div class="slide">
+            <div class="slide-counter">6 / 7</div>
+            <h2>🔧 개발 과정의 주요 도전과 해결</h2>
+            
+            <div class="card" style="margin-bottom: 25px;">
+                <h3><span class="emoji">❌</span>문제 1: 페이지 전환이 안 되는 오류</h3>
+                <p><strong>문제:</strong> showPage() 호출했는데 화면이 바뀌지 않음</p>
+                <p><strong>원인:</strong> DOM 업데이트 타이밍과 함수 호출 순서</p>
+                <p><strong>해결:</strong> 브라우저 개발자 도구로 디버깅, 올바른 실행 순서 파악</p>
+            </div>
+
+            <div class="card" style="margin-bottom: 25px;">
+                <h3><span class="emoji">🖼️</span>문제 2: 결과 이미지 로딩 실패</h3>
+                <p><strong>문제:</strong> 공룡 이미지가 표시되지 않음</p>
+                <p><strong>원인:</strong> 잘못된 파일 경로 설정</p>
+                <p><strong>해결:</strong> 상대 경로 개념 이해하고 정확한 경로 설정</p>
+            </div>
+
+            <h3>📚 배운 점</h3>
+            <ul>
+                <li>이론과 실제 구현의 차이점 체감</li>
+                <li>디버깅의 중요성과 문제 해결 과정 경험</li>
+            </ul>
+        </div>
+
+        <!-- 슬라이드 7: 학습 성과 -->
+        <div class="slide">
+            <div class="slide-counter">7 / 7</div>
+            <h2>🏆 학습 성과 및 향후 계획</h2>
+            
+            <h3>📈 웹 기술 학습 성과</h3>
+            <ul>
+                <li><strong>HTML:</strong> 시맨틱 구조와 데이터 속성 활용법 체득</li>
+                <li><strong>CSS:</strong> Flexbox, 반응형 디자인, 애니메이션 실전 적용</li>
+                <li><strong>JavaScript:</strong> DOM 조작, 이벤트 처리, 객체/배열 활용 경험</li>
+            </ul>
+
+            <h3>🌱 실제 개발 경험을 통한 성장</h3>
+            <ul>
+                <li>이론으로만 배운 것들을 실제 프로젝트에 적용해보는 경험</li>
+                <li>오류 발생 → 디버깅 → 해결 과정을 통한 문제 해결 능력 향상</li>
+                <li>사용자 관점에서 웹사이트를 설계하고 구현하는 방법 학습</li>
+            </ul>
+
+            <h3>🎯 향후 학습 목표</h3>
+            <ul>
+                <li>백엔드 연동으로 실제 데이터 저장/분석 기능 구현</li>
+                <li>React 같은 프레임워크로 더 효율적인 개발 방법 학습</li>
+                <li>웹 접근성과 성능 최적화에 대한 이해</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn" onclick="previousSlide()">← 이전</button>
+        <button class="nav-btn" id="nextBtn" onclick="nextSlide()">다음 →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            
+            // 버튼 상태 업데이트
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                showSlide(currentSlide + 1);
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        // 키보드 네비게이션
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                previousSlide();
+            }
+        });
+
+        // 초기 버튼 상태 설정
+        document.getElementById('prevBtn').disabled = true;
+    </script>
+</body>
+</html>

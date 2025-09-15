@@ -1,0 +1,12 @@
+# Visual Studio 관련
+.vs/
+.vscode/
+*.sln
+*.sqlite
+
+# 시스템 파일
+.DS_Store
+Thumbs.db
+
+# 환경 파일
+.env
