@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/image/dino-card-main.png" alt="Dinosaur Personality Test logo" width="220">
+  <img src="docs/images/dino-card-main.png" alt="Dinosaur Personality Test logo" width="220">
 </p>
 
 <h1 align="center">🦖 Dinosaur Personality Test — 공룡 성격 심리 테스트</h1>
@@ -68,7 +68,7 @@ jurassic-personality-test/
 - 프롬프트를 여러 번 조정하며 캐릭터 라인업(티라노/벨로시랩터/브라키오/마이아사우라/스피노/트리케라톱스/안킬로/파라사우롤로푸스)의 **스타일 통일성**을 맞췄습니다.
 
 <p align="center">
-  <img src="docs/image/dino-card-main.png" alt="공룡 카드 예시" width="80%">
+  <img src="docs/images/dino-card-main.png" alt="공룡 카드 예시" width="80%">
 </p>
 <p align="center"><em>예시: 스피노사우루스 카드</em></p>
 
@@ -82,12 +82,12 @@ jurassic-personality-test/
 
 <p align="center"><em>결과 카드 예시</em></p>
 <p align="center">
-  <img src="docs/image/tirano.png" alt="티라노사우루스 결과 카드" width="40%">
-  <img src="docs/image/velo.png" alt="벨로시랩터 결과 카드" width="40%">
+  <img src="docs/images/tirano.png" alt="티라노사우루스 결과 카드" width="40%">
+  <img src="docs/images/velo.png" alt="벨로시랩터 결과 카드" width="40%">
 </p>
 <p align="center">
-  <img src="docs/image/briki.png" alt="브라키오사우루스 결과 카드" width="40%">
-  <img src="docs/image/miasau.png" alt="마이아사우라 결과 카드" width="40%">
+  <img src="docs/images/briki.png" alt="브라키오사우루스 결과 카드" width="40%">
+  <img src="docs/images/miasau.png" alt="마이아사우라 결과 카드" width="40%">
 </p>
 
 ---
