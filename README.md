@@ -87,7 +87,7 @@ jurassic-personality-test/
 </p>
 <p align="center">
   <img src="docs/images/briki.png" alt="브라키오사우루스 결과 카드" width="40%">
-  <img src="docs/images/miasau.png" alt="마이아사우라 결과 카드" width="40%">
+  <img src="docs/images/tri.png" alt="트리케라톱스 결과 카드" width="40%">
 </p>
 
 ---
