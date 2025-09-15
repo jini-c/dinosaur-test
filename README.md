@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/slide-preview.png" alt="Dinosaur Personality Test logo" width="220">
+  <img src="docs/slide-preview.png" alt="Dinosaur Personality Test logo" width="50%">
 </p>
 
 <h1 align="center">🦖 Dinosaur Personality Test — 공룡 성격 심리 테스트</h1>
