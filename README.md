@@ -68,7 +68,7 @@ jurassic-personality-test/
 - 프롬프트를 여러 번 조정하며 캐릭터 라인업(티라노/벨로시랩터/브라키오/마이아사우라/스피노/트리케라톱스/안킬로/파라사우롤로푸스)의 **스타일 통일성**을 맞췄습니다.
 
 <p align="center">
-  <img src="docs/images/para.png" alt="공룡 카드 예시" width="80%">
+  <img src="docs/images/para.png" alt="공룡 카드 예시" width="50%">
 </p>
 <p align="center"><em>예시: 파라사우롤로푸스</em></p>
 
